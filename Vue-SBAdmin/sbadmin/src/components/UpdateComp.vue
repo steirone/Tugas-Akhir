@@ -1,7 +1,7 @@
 <template>
-    <div style="margin-bottom: 80px;">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="margin-bottom: 80px;">
       <!-- <button type="submit" class="btn btn-primary mx-3">Keluar</button> -->
-      <div v-show="!success" class="border border-primary p-4 m-4 rounded">
+      <div v-show="!success" class="col-8 border border-primary p-4 m-4 rounded">
           <!-- Button -->
           <div>
             <router-link v-if="this.$route.params.id > 0" to="/">
@@ -71,7 +71,7 @@
           </div>
           <div class="form-group col-md-4">
             <label for="agama">Agama</label>
-            <select v-bind:readonly="isReadOnly" v-model="dataKK.agama" id="agama" class="form-control">
+            <select v-bind:disabled="isReadOnly" v-model="dataKK.agama" id="agama" class="form-control">
               <option selected>Choose...</option>
               <option>Islam</option>
               <option>Kristem</option>
@@ -83,7 +83,7 @@
           </div>
           <div class="form-group col-md-2">
             <label for="jenis_kelamin">Jenis Kelamin</label>
-            <select v-bind:readonly="isReadOnly" v-model="dataKK.kelamin" id="jenis_kelamin" class="form-control">
+            <select v-bind:disabled="isReadOnly" v-model="dataKK.kelamin" id="jenis_kelamin" class="form-control">
               <option selected>Choose...</option>
               <option value="Laki Laki">Laki - Laki</option>
               <option value="Perempuan">Perempuan</option>
@@ -98,7 +98,7 @@
           </div>
           <div class="form-group col-md-6">
             <label for="inputZip">Golongan Darah</label>
-            <select v-bind:readonly="isReadOnly" v-model="dataKK.goldar" id="inputState" class="form-control">
+            <select v-bind:disabled="isReadOnly" v-model="dataKK.goldar" id="inputState" class="form-control">
               <option selected>Choose...</option>
               <option>A</option>
               <option>AB</option>
@@ -141,11 +141,11 @@
           
         </div>
         <p v-show="emailValid" class="text-danger text-center">No NIK sudah Ada</p>
-        <button class="btn btn-primary">Update Data</button>
+        <button class="btn btn-primary" style="cursor:not-allowed;" disabled>Update Data</button>
       </form>
     </div>
     </div>
-    <SuccesFormVue v-show="success"></SuccesFormVue>
+    <SuccesFormVue class="col-6" v-show="success"></SuccesFormVue>
     </div>
       
     </template>
@@ -349,4 +349,9 @@
     </script>
     
     <style>
+    .kakak{
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
     </style>

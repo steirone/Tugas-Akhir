@@ -1,8 +1,8 @@
 <template>
 <div class="sidebar" :class="{ open: isActive }">
     <div class="logo-details">
-      <i class='bx bxl-c-plus-plus icon'></i>
-        <div class="logo_name" @click="hideView">CodingLab</div>
+      <i class='bx bx-book-content icon'></i>
+        <div class="logo_name" @click="hideView">E-KTP</div>
         <i @click="hideView" class='bx bx-menu' id="btn" ></i>
     </div>
     <ul class="nav-list">
