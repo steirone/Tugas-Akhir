@@ -10,7 +10,7 @@
           <th style="width: 305px;" scope="col">Action</th>
         </tr>
       </thead>
-      <tbody v-if="dataKK == null">
+      <tbody v-if="dataKK.length == 0">
         <tr>
           <th colspan="4" scope="row" class="text-center">Data Kosong</th>
         </tr>

@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex flex-column align-items-center justify-content-center" style="margin-bottom: 80px;">
+    <div class="flex-column align-items-center justify-content-center" style="margin-bottom: 80px;">
       <!-- <button type="submit" class="btn btn-primary mx-3">Keluar</button> -->
       <div v-show="!success" class="col-8 border border-primary p-4 m-4 rounded">
           <!-- Button -->
@@ -141,7 +141,7 @@
           
         </div>
         <p v-show="emailValid" class="text-danger text-center">No NIK sudah Ada</p>
-        <button class="btn btn-primary" style="cursor:not-allowed;" disabled>Update Data</button>
+        <button class="btn btn-primary " v-bind:disabled="isReadOnly" :class="{cursornoni : isReadOnly}">Update Data</button>
       </form>
     </div>
     </div>
@@ -297,14 +297,25 @@
         },
         DeleteFunc(id) {
           if (confirm("Anda yakin ingin menghapus ?")) {
-            ServicesWeb.deleteKK(id)
-              .then((response) => {
-                console.log(response.data);
-                this.success = true;
-              })
-              .catch((e) => {
-                console.log(e);
-              });
+            if (this.$route.params.ih > 0) {
+              ServicesWeb.deleteAnggota(id)
+                .then((response) => {
+                  console.log(response.data);
+                  this.success = true;
+                })
+                .catch((e) => {
+                  console.log(e);
+                });
+            } else {
+              ServicesWeb.deleteKK(id)
+                .then((response) => {
+                  console.log(response.data);
+                  this.success = true;
+                })
+                .catch((e) => {
+                  console.log(e);
+                });
+            }
           } else {
             alert("Hapus Dibatalkan");
           }
@@ -352,6 +363,9 @@
     .kakak{
       cursor: not-allowed;
       pointer-events: none;
+    }
+    .cursornoni{
+      cursor: not-allowed;
     }
 
     </style>
