@@ -57,4 +57,10 @@ public class AnggotaService implements IAnggotaService{
 		return AnggotaRepoository.deleteDataSemua(nokk);
 	}
 
+	@Override
+	public DataAnggota validateKepala(int nokk) {
+		// TODO Auto-generated method stub
+		return AnggotaRepoository.validateKepala(nokk);
+	}
+
 }

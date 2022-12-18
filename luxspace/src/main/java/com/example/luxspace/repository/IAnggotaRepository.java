@@ -12,4 +12,5 @@ public interface IAnggotaRepository {
 	public DataAnggota validateDataKK(int nonik);
 	public List<DataAnggota> getAllDataAnggota(int nokk);
 	public List<DataAnggota> deleteDataSemua(int nokk);
+	public DataAnggota validateKepala(int nokk);
 }

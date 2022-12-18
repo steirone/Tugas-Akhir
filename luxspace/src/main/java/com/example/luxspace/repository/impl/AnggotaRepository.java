@@ -33,8 +33,8 @@ public class AnggotaRepository implements IAnggotaRepository{
 	@Override
 	public DataAnggota updateDataKK(int id, DataAnggota datakk) {
 		String query = "UPDATE data_anggota SET nokk = ?, nonik = ?, nama = ?, status = ?, "
-				+ "tempat_lahir = ?, agama = ?, kelamin = ?, pekerjaan = ? , goldar = ?, alamat = ? WHERE id = ? ";
-		jdbcTemplate.update(query, new Object[] {datakk.getNokk(),datakk.getNonik(),datakk.getNama(),datakk.getStatus(),datakk.getTempat_lahir(),datakk.getAgama(),datakk.getKelamin(),datakk.getPekerjaan(),datakk.getGoldar(),datakk.getAlamat(), id });
+				+ "tempat_lahir = ?, agama = ?, kelamin = ?, pekerjaan = ? , goldar = ?, alamat = ?,kepala_keluarga = ? WHERE id = ? ";
+		jdbcTemplate.update(query, new Object[] {datakk.getNokk(),datakk.getNonik(),datakk.getNama(),datakk.getStatus(),datakk.getTempat_lahir(),datakk.getAgama(),datakk.getKelamin(),datakk.getPekerjaan(),datakk.getGoldar(),datakk.getAlamat(),datakk.getKepala_keluarga(), id });
 		
 		return datakk;
 	}
@@ -72,6 +72,12 @@ public class AnggotaRepository implements IAnggotaRepository{
 		jdbcTemplate.update(query, nokk);
 		
 		return result;
+	}
+
+	@Override
+	public DataAnggota validateKepala(int nokk) {
+		String query = "SELECT * FROM data_anggota WHERE nokk = ? AND kepala_keluarga = 'Yes'";
+		return jdbcTemplate.queryForObject(query, new BeanPropertyRowMapper<> (DataAnggota.class), nokk);
 	}
 
 }

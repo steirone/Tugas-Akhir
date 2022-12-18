@@ -1,7 +1,7 @@
 <template>
     <div class="flex-column align-items-center justify-content-center" style="margin-bottom: 80px;">
       <!-- <button type="submit" class="btn btn-primary mx-3">Keluar</button> -->
-      <div v-show="!success" class="col-8 border border-primary p-4 m-4 rounded">
+      <div class="col-8 border border-primary p-4 m-4 rounded" :class="{'d-none' : success1}">
           <!-- Button -->
           <div>
             <router-link v-if="this.$route.params.id > 0" to="/">
@@ -146,6 +146,7 @@
     </div>
     </div>
     <SuccesFormVue class="col-6" v-show="success"></SuccesFormVue>
+    <AlertDeleteVue class="col-6" v-show="success2"></AlertDeleteVue>
     </div>
       
     </template>
@@ -153,6 +154,7 @@
     <script>
     import ServicesWeb from '@/services/ServicesWeb';
     import SuccesFormVue from './AlertUpdate.vue';
+    import AlertDeleteVue from './AlertDelete.vue';
     
     export default {
       data () {
@@ -171,15 +173,18 @@
             kepala_keluarga : null
           },
           emailValid : false,
-          success : false,
           isReadOnly : true,
           isReadOnly1 : true,
           dataNOKK : null,
-          dataNONIk : null
+          dataNONIk : null,
+          success : false,
+          success1 : false,
+          success2 : false
         }
       },
       components : {
-        SuccesFormVue
+        SuccesFormVue,
+        AlertDeleteVue
       },
       methods :{
         TestRead(){
@@ -192,6 +197,7 @@
                 .then(response => {
                   console.log(response.data);
                   this.dataKK = response.data;
+                  this.dataNOKK = this.dataKK.nokk
                 })
                 .catch(e => {
                   console.log(e);
@@ -202,6 +208,7 @@
               .then(response => {
                   console.log(response.data);
                   this.dataKK = response.data;
+                  this.dataNONIk = this.dataKK.nonik
                 })
                 .catch(e => {
                   console.log(e);
@@ -231,8 +238,6 @@
         },
         RegistKKFunc(){
             let data = this.dataKK
-            this.dataNOKK = data.nokk
-            this.dataNONIk = data.nonik
             console.log(data)
             if (this.$route.params.id > 0) {
               if (this.dataNOKK == data.nokk) {
@@ -240,6 +245,7 @@
                 .then(response => {
                         console.log(response.data);
                         this.success = true;
+                        this.success1 = true;
                       })
                       .catch(e => {
                         console.log(e);
@@ -256,6 +262,7 @@
                       .then(response => {
                         console.log(response.data);
                         this.success = true;
+                        this.success1 = true;
                       })
                       .catch(e => {
                         console.log(e);
@@ -270,6 +277,7 @@
                       .then(response => {
                         console.log(response.data);
                         this.success = true;
+                        this.success1 = true;
                       })
                       .catch(e => {
                         console.log(e);
@@ -286,6 +294,7 @@
                         .then(response => {
                           console.log(response.data);
                           this.success = true;
+                          this.success1 = true;
                         })
                         .catch(e => {
                           console.log(e);
@@ -301,7 +310,8 @@
               ServicesWeb.deleteAnggota(id)
                 .then((response) => {
                   console.log(response.data);
-                  this.success = true;
+                  this.success1 = true;
+                  this.success2 = true;
                 })
                 .catch((e) => {
                   console.log(e);
@@ -310,7 +320,8 @@
               ServicesWeb.deleteKK(id)
                 .then((response) => {
                   console.log(response.data);
-                  this.success = true;
+                  this.success1 = true;
+                  this.success2 = true;
                 })
                 .catch((e) => {
                   console.log(e);

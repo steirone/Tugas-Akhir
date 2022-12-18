@@ -3,7 +3,7 @@
         <h5 class="card-title">Success!</h5>
         <p class="card-text" >Your Data Has Been Deleted!</p>
         <button v-if="this.$route.params.ih" @click.prevent="RefreshFunc" class="btn bg-primary text-light">Back</button>
-        <router-link to="/"><button class="btn bg-primary text-light">Back</button></router-link>
+        <router-link to="/" v-else><button class="btn bg-primary text-light">Back</button></router-link>
         
     </div>
 </template>
@@ -15,7 +15,11 @@
         },
         methods :{
             RefreshFunc() {
-                location.reload();
+                if (this.$route.params.id > 0) {
+                   this.$router.push('/') 
+                } else {
+                    location.reload();
+                }
             },
         },
     }

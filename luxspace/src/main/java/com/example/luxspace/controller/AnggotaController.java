@@ -58,4 +58,9 @@ public class AnggotaController {
 	public List<DataAnggota> deleteDataSemua(@PathVariable int nokk){
 		return AnggotaService.deleteDataSemua(nokk);
 	}
+	
+	@GetMapping("validatekk/{nokk}")
+	public DataAnggota validateKepala(@PathVariable int nokk) {
+		return AnggotaService.validateKepala(nokk);
+	}
 }
