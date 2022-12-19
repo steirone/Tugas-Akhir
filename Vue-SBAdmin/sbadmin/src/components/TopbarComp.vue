@@ -84,11 +84,11 @@
             >
             <b-sidebar id="sidebar-right" class="text-center" :title="dataUser.name" right shadow>
               <div class="px-3 py-2">
-                <a href="" class="nav-link text-dark">Ubah Kata Sandi</a>
+                <a href="" class="nav-link text-dark" style="pointer-events: none;">Ubah Kata Sandi</a>
                 <hr>
-                <a href="" class="nav-link text-dark">Ubah Email</a>
+                <a href="" class="nav-link text-dark" style="pointer-events: none;">Ubah Email</a>
                 <hr>
-                <a href="" class="nav-link text-dark">Tampilkan Device Yang Login</a>
+                <a href="" class="nav-link text-dark" style="pointer-events: none;">Tampilkan Device Yang Login</a>
                 <hr>
                 <a href="" @click.prevent="LogoutFunc" class="nav-link text-dark">Logout</a>
               </div>

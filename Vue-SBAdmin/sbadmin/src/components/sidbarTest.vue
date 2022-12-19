@@ -8,22 +8,22 @@
     <ul class="nav-list">
       
       <li>
-        <a href="#">
-          <i @click.prevent="NyobaFunc(1)" class='bx bx-grid-alt'></i>
+        <a @click.prevent="NyobaFunc(1)" style="pointer-events: fill;" href="#">
+          <i  class='bx bx-grid-alt'></i>
           <span @click.prevent="NyobaFunc(1)" class="links_name">Dashboard</span>
         </a>
          <span class="tooltip">Dashboard</span>
       </li>
       <li>
-       <a href="#" @click.prevent="NyobaFunc(3)">
+       <a href="#" @click.prevent="NyobaFunc(3)" style="pointer-events: fill;">
          <i  class='bx bx-user' ></i>
          <span @click.prevent="NyobaFunc(3)" class="links_name">Data KK</span>
        </a>
        <span class="tooltip">Data KK</span>
      </li>
      <li>
-       <a @click.prevent="NyobaFunc(2)" href="#">
-         <i @click.prevent="NyobaFunc(2)" class='bx bx-user-plus' ></i>
+       <a @click.prevent="NyobaFunc(2)" href="#" style="pointer-events: fill;">
+         <i  class='bx bx-user-plus' ></i>
          <span @click.prevent="NyobaFunc(2)" class="links_name">Tambah Anggota</span>
        </a>
        <span class="tooltip">Tambah Anggota</span>

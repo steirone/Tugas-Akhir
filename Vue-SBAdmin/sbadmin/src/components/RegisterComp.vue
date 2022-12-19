@@ -106,28 +106,59 @@ export default {
   },
   methods : {
     RegistAccount(){
-      console.log(this.dataLogin)
-      if (this.dataLogin.password == this.verifPass) {
-        let data = this.dataLogin
-        ServicesWeb.validate(data.email)
+      let email = false
+      let password = false
+      let data = this.dataLogin
+      if (this.verifPass !== data.password) {
+        this.passValid = true
+        password = true
+      }
+
+      ServicesWeb.validate(data.email)
+        .then(response => {
+          if (response.status == 200) {
+            this.emailValid = true
+            email = true
+          }
+        })
+        .catch(e =>{
+          console.log(e)
+        })
+
+      if (email == false && password == false) {
+        // console.log("asdasdsadsa")
+        ServicesWeb.register(data)
           .then(response => {
             console.log(response.data);
-            this.emailValid = true;
+            this.success = true;
           })
           .catch(e => {
             console.log(e);
-            ServicesWeb.register(data)
-              .then(response => {
-                console.log(response.data);
-                this.success = true;
-              })
-              .catch(e => {
-                console.log(e);
-              });
           });
-      } else {
-        this.passValid = true
       }
+
+      // console.log(this.dataLogin)
+      // if (this.dataLogin.password == this.verifPass) {
+      //   let data = this.dataLogin
+      //   ServicesWeb.validate(data.email)
+      //     .then(response => {
+      //       console.log(response.data);
+      //       this.emailValid = true;
+      //     })
+      //     .catch(e => {
+      //       console.log(e);
+      //       ServicesWeb.register(data)
+      //         .then(response => {
+      //           console.log(response.data);
+      //           this.success = true;
+      //         })
+      //         .catch(e => {
+      //           console.log(e);
+      //         });
+      //     });
+      // } else {
+      //   this.passValid = true
+      // }
     },
     lostViewP(){
       this.passValid = false
