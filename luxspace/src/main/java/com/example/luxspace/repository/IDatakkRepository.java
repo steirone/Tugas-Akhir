@@ -10,4 +10,5 @@ public interface IDatakkRepository {
 	public DataKK updateDataKK(int id, DataKK datakk);
 	public DataKK deleteDataKK(int id);
 	public DataKK validateDataKK(int nokk);
+	public List<DataKK> getAlamat();
 }

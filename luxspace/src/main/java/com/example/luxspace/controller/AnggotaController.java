@@ -44,9 +44,9 @@ public class AnggotaController {
 		return AnggotaService.deleteDataKK(id);
 	}
 	
-	@GetMapping("/valid/{nonik}")
-	public DataAnggota validateDataKK(@PathVariable int nonik) {
-		return AnggotaService.validateDataKK(nonik);
+	@GetMapping("/valid/{nonik}/{nokk}")
+	public DataAnggota validateDataKK(@PathVariable int nonik,@PathVariable int nokk) {
+		return AnggotaService.validateDataKK(nonik,nokk);
 	}
 	
 	@GetMapping("angot/{nokk}")

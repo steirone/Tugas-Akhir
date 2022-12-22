@@ -45,4 +45,10 @@ public class DatakkService implements IDatakkService{
 		return DatakkRepoository.validateDataKK(nonik);
 	}
 
+	@Override
+	public List<DataKK> getAlamat() {
+		// TODO Auto-generated method stub
+		return DatakkRepoository.getAlamat();
+	}
+
 }

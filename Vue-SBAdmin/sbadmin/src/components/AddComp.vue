@@ -19,6 +19,7 @@
               class="form-control col-8"
               id="name"
               placeholder="Masukkan No KK"
+              required
             />
           </div>
           <div class="form-group col-md-6 d-flex justify-content-between">
@@ -29,6 +30,7 @@
               class="form-control col-8"
               id="nik"
               placeholder="Masukkan No NIK"
+              required
             />
           </div>
         </div>
@@ -40,6 +42,7 @@
               type="text"
               class="form-control col-8"
               id="name"
+              required
               placeholder="Masukkan Nama Lengkap"
             />
           </div>
@@ -50,6 +53,7 @@
               type="text"
               class="form-control col-8"
               id="nik"
+              required
               placeholder="Masukkan Status"
             />
           </div>
@@ -108,12 +112,14 @@
               class="form-control col-8"
               style="height: 50px;"
               id="inputAddress"
+              required
               placeholder="Masukkan Alamat Lengkap"
             />
           </div>
         </div>
     
         <p v-show="emailValid" class="text-danger text-center">No KK sudah Ada</p>
+        <p v-show="emailValid1" class="text-danger text-center">No NIK sudah Ada</p>
         <button class="btn btn-primary">Tambah Data</button>
       </form>
     </div>
@@ -145,6 +151,7 @@ export default {
         alamat : null,
       },
       emailValid : false,
+      emailValid1 : false,
       success : false,
       isReadOnly : false,
     }
@@ -182,10 +189,10 @@ export default {
               });
           }); 
       } else {
-        ServicesWeb.validateAnggota(data.nonik)
+        ServicesWeb.validateAnggota(data.nonik,data.nokk)
           .then(response => {
               console.log(response.data);
-              this.emailValid = true;
+              this.emailValid1 = true;
             })
             .catch(e => {
               console.log(e);

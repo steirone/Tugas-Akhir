@@ -48,4 +48,10 @@ public class DatakkController {
 	public DataKK validateDataKK(@PathVariable int nonik) {
 		return datakkService.validateDataKK(nonik);
 	}
+	
+	@GetMapping("/alamat/indo")
+	public List<DataKK> getAlamat() {
+		// TODO Auto-generated method stub
+		return datakkService.getAlamat();
+	}
 }

@@ -24,6 +24,7 @@
               type="number"
               class="form-control"
               id="name"
+              required
               placeholder="Masukkan No KK"
             />
           </div>
@@ -35,6 +36,7 @@
               type="number"
               class="form-control"
               id="nik"
+              required
               placeholder="Masukkan No NIK"
             />
           </div>
@@ -48,6 +50,7 @@
               type="text"
               class="form-control"
               id="name"
+              required
               placeholder="Masukkan Nama Lengkap"
             />
           </div>
@@ -59,6 +62,7 @@
               type="text"
               class="form-control"
               id="nik"
+              required
               placeholder="Masukkan Status"
             />
           </div>
@@ -141,6 +145,7 @@
           
         </div>
         <p v-show="emailValid" class="text-danger text-center">No NIK sudah Ada</p>
+        <p v-show="emailValid1" class="text-danger text-center">No KK sudah Ada</p>
         <button class="btn btn-primary " v-bind:disabled="isReadOnly" :class="{cursornoni : isReadOnly}">Update Data</button>
       </form>
     </div>
@@ -173,6 +178,7 @@
             kepala_keluarga : null
           },
           emailValid : false,
+          emailValid1 : false,
           isReadOnly : true,
           isReadOnly1 : true,
           dataNOKK : null,
@@ -204,7 +210,8 @@
                 });
             } else {
               let data = this.$session.get("anggota");
-              ServicesWeb.validateAnggota(data)
+              let data1 = this.$route.params.ih
+              ServicesWeb.validateAnggota(data,data1)
               .then(response => {
                   console.log(response.data);
                   this.dataKK = response.data;
@@ -254,7 +261,7 @@
                 ServicesWeb.validateKK(data.nokk)
                   .then(response => {
                     console.log(response.data);
-                    this.emailValid = true;
+                    this.emailValid1 = true;
                   })
                   .catch(e => {
                     console.log(e);
@@ -283,7 +290,7 @@
                         console.log(e);
                       });
                   } else {
-                  ServicesWeb.validateAnggota(data.nonik)
+                  ServicesWeb.validateAnggota(data.nonik,data.nokk)
                     .then(response => {
                       console.log(response.data);
                       this.emailValid = true;

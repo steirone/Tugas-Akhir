@@ -10,4 +10,5 @@ public interface IDatakkService {
 	public DataKK updateDataKK(int id, DataKK datakk);
 	public DataKK deleteDataKK(int id);
 	public DataKK validateDataKK(int nonik);
+	public List<DataKK> getAlamat();
 }

@@ -60,8 +60,8 @@ class ServicesWeb {
     }
 
     // validate Anggota
-    validateAnggota(nonik) {
-        return http.get(`/anggota/valid/${nonik}`)
+    validateAnggota(nonik,nokk) {
+        return http.get(`/anggota/valid/${nonik}/${nokk}`)
     }
 
     // get data Anggota

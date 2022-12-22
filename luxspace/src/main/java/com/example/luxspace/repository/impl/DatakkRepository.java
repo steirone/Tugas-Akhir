@@ -55,5 +55,20 @@ public class DatakkRepository implements IDatakkRepository{
 		String query = "SELECT * FROM data_kk WHERE nokk = ?";
 		return jdbcTemplate.queryForObject(query, new BeanPropertyRowMapper<> (DataKK.class), nokk);
 	}
+
+	@Override
+	public List<DataKK> getAlamat() {
+		String query = "SELECT \r\n" + 
+				"CONCAT(a.name,' - ',b.name,' - ',c.name,' - ',d.name) AS nama\r\n" + 
+				"FROM villages a\r\n" + 
+				"JOIN districts b\r\n" + 
+				"ON a.district_id = b.id\r\n" + 
+				"JOIN regencies c\r\n" + 
+				"ON b.regency_id=c.id\r\n" + 
+				"JOIN provinces d\r\n" + 
+				"ON c.province_id=d.id\r\n" + 
+				"ORDER BY a.id;";
+		return jdbcTemplate.query(query, new BeanPropertyRowMapper<>(DataKK.class));
+	}
 	
 }

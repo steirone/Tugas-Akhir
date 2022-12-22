@@ -9,7 +9,7 @@ public interface IAnggotaRepository {
 	public List<DataAnggota> getAllDataKK();
 	public DataAnggota updateDataKK(int id, DataAnggota datakk);
 	public DataAnggota deleteDataKK(int id);
-	public DataAnggota validateDataKK(int nonik);
+	public DataAnggota validateDataKK(int nonik,int nokk);
 	public List<DataAnggota> getAllDataAnggota(int nokk);
 	public List<DataAnggota> deleteDataSemua(int nokk);
 	public DataAnggota validateKepala(int nokk);

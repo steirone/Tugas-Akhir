@@ -40,9 +40,9 @@ public class AnggotaService implements IAnggotaService{
 	}
 
 	@Override
-	public DataAnggota validateDataKK(int nonik) {
+	public DataAnggota validateDataKK(int nonik,int nokk) {
 		// TODO Auto-generated method stub
-		return AnggotaRepoository.validateDataKK(nonik);
+		return AnggotaRepoository.validateDataKK(nonik,nokk);
 	}
 
 	@Override

@@ -51,9 +51,9 @@ public class AnggotaRepository implements IAnggotaRepository{
 	}
 
 	@Override
-	public DataAnggota validateDataKK(int nonik) {
-		String query = "SELECT * FROM data_anggota WHERE nonik = ?";
-		return jdbcTemplate.queryForObject(query, new BeanPropertyRowMapper<> (DataAnggota.class), nonik);
+	public DataAnggota validateDataKK(int nonik,int nokk) {
+		String query = "SELECT * FROM data_anggota WHERE nonik = ? AND nokk = ?";
+		return jdbcTemplate.queryForObject(query, new BeanPropertyRowMapper<> (DataAnggota.class), nonik,nokk);
 	}
 
 	@Override
